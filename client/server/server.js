@@ -22,7 +22,22 @@ app.get("/products", async (req, res) => {
   const products = await Product.find();
   res.json(products);
 });
-
+app.get('/', (req, res) => {
+  res.send(`
+      <!DOCTYPE html>
+      <html lang="th">
+      <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <title>Simple HTML Page</title>
+      </head>
+      <body>
+          <h1>ยินดีต้อนรับสู่หน้าเว็บของฉัน!</h1>
+          <p>นี่คือหน้าเว็บที่โหลดจาก Express.js Routes</p>
+      </body>
+      </html>
+  `);
+});
 app.post("/products", async (req, res) => {
   const product = new Product(req.body);
   await product.save();
