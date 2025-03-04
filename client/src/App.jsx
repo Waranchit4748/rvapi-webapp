@@ -1,17 +1,16 @@
-import { useState } from "react";
+import { ProductProvider } from "./components/ProductContext";
 import ProductList from "./components/ProductList";
 import AddProduct from "./components/AddProduct";
 
 function App() {
-  const [refresh, setRefresh] = useState(false);
-  const apiUrl = "http://localhost:5000";
-
   return (
-    <div>
-      <h1>ร้านค้าสินค้าออนไลน์</h1>
-      <AddProduct apiUrl={apiUrl} onProductAdded={() => setRefresh(!refresh)} />
-      <ProductList apiUrl={apiUrl} key={refresh} />
-    </div>
+    <ProductProvider>
+      <div>
+        <h1>ร้านค้าสินค้าออนไลน์</h1>
+        <AddProduct />
+        <ProductList />
+      </div>
+    </ProductProvider>
   );
 }
 
